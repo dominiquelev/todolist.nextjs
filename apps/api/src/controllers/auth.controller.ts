@@ -1,3 +1,4 @@
+import { loginService } from '@/services/auth/login.service';
 import { registerService } from '@/services/auth/register.service';
 import { Request, Response } from 'express';
 
@@ -10,7 +11,15 @@ export class AuthController {
     } catch (error) {
       throw (error)
     }
+  }
+  async loginController(req: Request, res: Response) {
+    try {
 
+      const result = await loginService(req.body);
+      return res.status(201).send(result);
+    } catch (error) {
+      throw (error)
+    }
   }
 
   // async getSampleDataById(req: Request, res: Response) {
