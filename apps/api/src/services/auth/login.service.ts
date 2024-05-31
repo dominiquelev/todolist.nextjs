@@ -7,23 +7,25 @@ export const loginService = async (body: Pick<User, 'email' | 'password'>) => {
 
         const { email, password } = body
         const user = await prisma.user.findFirst({
-            where: { email }
-        })
+            where: { email },
+        });
+
         if (!user) {
             throw new Error("invalid email address")
         }
-        const isPasswordValid = comparePassword(password, user.password)
+
+        const isPasswordValid = await comparePassword(password, user.password);
+        
         if (!isPasswordValid) {
-            throw new Error("incorrect password")
+            throw new Error("incorrect password");
         }
-        return (
-            {
-                message: "login success",
-                data: user
-            }
-        )
+        return {
+            message: "login success",
+            data: user,
+        }
+
 
     } catch (error) {
-        throw error
+        throw error;
     }
 }
