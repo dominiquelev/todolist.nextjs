@@ -8,7 +8,7 @@ export const registerService = async (body: Omit<User, "id">) => {
 
         const existingUser = await prisma.user.findFirst({
             where: {
-                OR: [{ username }, { email }],
+                AND: [{ username }, { email }],
             }
         })
         if (existingUser) {
@@ -27,7 +27,7 @@ export const registerService = async (body: Omit<User, "id">) => {
         })
         return ({
             message: "register Success",
-            data: newUser
+            data: newUser,
         })
 
     } catch (error) {
