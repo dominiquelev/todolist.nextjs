@@ -8,9 +8,9 @@ import React from 'react';
 
 const SideBar = () => {
   return (
-    <section className=" fixed  w-64 h-screen top-1 left-1 bottom-1 text-white ">
-      <div className="  flex flex-col w-full bg-slate-300  rounded-l-md overflow-hidden">
-        <div className="flex ">
+    <section className="fixed w-1/4 h-screen text-white m-auto">
+      <div className="flex flex-col h-full bg-slate-300 rounded-l-md ">
+        <div className="flex">
           <div>
             <CircleUserRound />
           </div>
